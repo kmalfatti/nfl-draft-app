@@ -9,39 +9,45 @@ data.players.forEach((cur, i)=>{
   var rank = $('<td>').append(cur.rank)
   var projected = $('<td>').append(cur.projected_points)
   var bye = $('<td>').append(cur.bye)
-  var button = $('<button>').append().addClass('btn-xs btn-danger').text('Remove').on('click', remove)
+  var button = $('<td>').append($('<button>').append().addClass('btn-xs btn-danger').text('Remove').on('click', remove))
 
   var row = $('<tr>').append(overall, name, position, team, rank, projected, bye, button)
+  i%2===0 ? row.css('backgroundColor', 'white') : row.css('backgroundColor', 'rgb(235, 235, 235)')
+
   $('tbody').append(row)
 })
 
 
 function remove(){
-  prev = $(this).parent();
-  console.log(prev)
-  var undo = $('<tr>').append($('<td>').append($('<button>').text('Undo')).addClass('undo').attr('colspan', 8).append($('<span>').text(' 5')))
+  $('.undo').hide()
+  prev = $(this).parent().parent();
+  var bgc = prev.css('backgroundColor')
+  var undo = $('<tr>').append($('<td>').append($('<button>').text('Undo').addClass('btn-xs btn-warning')).addClass('undo').attr('colspan', 8).append($('<span>').text(' 5')))
+  undo.css('backgroundColor', bgc)
   $(undo).on('click', redisplay)
-  $(this).parent().before(undo)
-  $(this).parent().hide()
+  prev.before(undo)
+  prev.hide()
   countdown(4);
 }
 
 function countdown(i) {
-    timer = setInterval(function () {
-        $('span').text(" "+i)
-        if (i===0){
-          $('.undo').parent().hide()
-          clearInterval(timer)
-        }
-        i--;
-    }, 1000);
+  clearInterval(timer)
+  timer = setInterval(function () {
+      $('span').text(" "+i)
+      if (i===0){
+        $('.undo').parent().hide()
+        clearInterval(timer)
+      }
+      i--;
+  }, 1000);
 }
 
 function redisplay(){
   $(prev).show()
-  $(this).hide()
+  $('.undo').hide()
   clearInterval(timer)
 }
+
 
 //Confirm before closing window
 /*
