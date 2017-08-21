@@ -1,6 +1,15 @@
 var prev;
 var timer;
 
+var bye5 = ['atl', 'den', 'no', 'was']
+var bye6 = ['buf', 'cin', 'dal', 'sea']
+var bye7 = ['det', 'hou']
+var bye8 = ['ari', 'gb', 'jax', 'lar', 'nyg', 'ten']
+var bye9 = ['chi', 'cle', 'lac', 'min', 'ne', 'pit']
+var bye10 = ['bal', 'kc', 'oak', 'phi']
+var bye11 = ['car', 'ind', 'mia', 'nyj', 'sf', 'tb']
+
+
 $(document).ready(function(){
     $('#myTable').DataTable();
 });
@@ -21,6 +30,46 @@ data.players.forEach((cur, i)=>{
   $('tbody').append(row)
 })
 
+$('#add-player-form').on('submit', function(e){
+  e.preventDefault()
+  var tdname
+  var inputbye;
+  var inputname = $('#inputname').val()
+  var inputposition = $('#inputposition').val()
+  var inputteam = $('#inputteam').val()
+  var inputoverall = $('#inputoverall').val() || data.players.length+1
+  var inputrank = $('#inputrank').val() || 0
+  var inputprojected = $('#inputprojected').val() || 0
+  var inputlink = $('#inputlink').val()
+  if (bye5.indexOf(inputteam)>-1){inputbye = 5}
+  else if (bye6.indexOf(inputteam)>-1){inputbye = 6}
+  else if (bye7.indexOf(inputteam)>-1){inputbye = 7}
+  else if (bye8.indexOf(inputteam)>-1){inputbye = 8}
+  else if (bye9.indexOf(inputteam)>-1){inputbye = 9}
+  else if (bye10.indexOf(inputteam)>-1){inputbye = 10}
+  else if (bye11.indexOf(inputteam)>-1){inputbye = 11}
+  data.players.push({
+    name: inputname, 
+    link: inputlink,
+    position: inputposition.toUpperCase(),
+    team: inputteam.toUpperCase(),
+    rank: inputrank,
+    projected_points: inputprojected,
+    bye: inputbye,
+    })
+  var tdoverall = $('<td>').append(inputoverall)
+  if (inputlink==''){
+    tdname = $('<td>').append(inputname)
+  } else tdname = $('<td>').append($('<a>').attr('href', inputlink).text(inputname).attr('target','_blank'))
+  var tdposiotion = $('<td>').append(inputposition.toUpperCase())
+  var tdteam = $('<td>').append(inputteam.toUpperCase())
+  var tdrank = $('<td>').append(inputrank)
+  var tdprojected = $('<td>').append(inputprojected)
+  var tdbye = $('<td>').append(inputbye)
+  var button = $('<td>').append($('<button>').append().addClass('btn-xs btn-danger').text('Remove').on('click', remove))
+  var addrow = $('<tr>').append(tdoverall, tdname, tdposiotion, tdteam, tdrank, tdprojected, tdbye, button)
+  $('tbody').append(addrow)
+})
 
 function remove(){
   $('.undo').hide()

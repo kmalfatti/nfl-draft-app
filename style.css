@@ -5,3 +5,16 @@
 .undo:hover{
   cursor: pointer;
 }
+
+#myTable_filter{
+  text-align: center;
+  float: none;
+}
+
+input{
+  border-radius: 5px;
+}
+
+#add-player-heading{
+  text-align: center;
+}

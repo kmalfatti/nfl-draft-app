@@ -26,6 +26,97 @@
   </tbody>
 </table>
 
+<h3 id="add-player-heading">Add A Player</h3>
+<form class="form-horizontal" id="add-player-form">
+  <div class="form-group">
+    <label for="inputname" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputname" placeholder="Name" required>
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="inputposition" class="col-sm-2 control-label">Position</label>
+      <div class="col-sm-9">
+      <select id="inputposition" class="form-control" required>
+        <option value="rb">RB</option>
+        <option value="wr">WR</option>
+        <option value="te">TE</option>
+        <option value="qb">QB</option>
+        <option value="def">DEF</option>
+        <option value="k">K</option>
+      </select>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="inputteam" class="col-sm-2 control-label">Team</label>
+      <div class="col-sm-9">
+      <select id="inputteam" class="form-control" required>
+        <option value="ari">ARI</option>
+        <option value="atl">ATL</option>
+        <option value="bal">BAL</option>
+        <option value="buf">BUF</option>
+        <option value="car">CAR</option>
+        <option value="chi">CHI</option>
+        <option value="cin">CIN</option>
+        <option value="cle">CLE</option>
+        <option value="dal">DAL</option>
+        <option value="den">DEN</option>
+        <option value="det">DET</option>
+        <option value="gb">GB</option>
+        <option value="hou">HOU</option>
+        <option value="ind">IND</option>
+        <option value="jax">JAX</option>
+        <option value="kc">KC</option>
+        <option value="lac">LAC</option>
+        <option value="lar">LAR</option>
+        <option value="mia">MIA</option>
+        <option value="min">MIN</option>
+        <option value="ne">NE</option>
+        <option value="no">NO</option>
+        <option value="nyg">NYG</option>
+        <option value="nyj">NYJ</option>
+        <option value="oak">OAK</option>
+        <option value="phi">PHI</option>
+        <option value="pit">PIT</option>
+        <option value="sea">SEA</option>
+        <option value="sf">SF</option>
+        <option value="tb">TB</option>
+        <option value="ten">TEN</option>
+        <option value="was">WAS</option>
+      </select>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="inputoverall" class="col-sm-2 control-label">Ocerall Pick</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputoverall" placeholder="Overall Pick (optional)">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputrank" class="col-sm-2 control-label">Rank</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputrank" placeholder="Rank (optional)">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputprojected" class="col-sm-2 control-label">Projected Points</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputprojected" placeholder="Projected Points (optional)">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputlink" class="col-sm-2 control-label">Link</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputlink" placeholder="Link to more info (optional)">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-8">
+      <button type="submit" class="btn btn-default" id="add-player">Submit</button>
+    </div>
+  </div>
+</form>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src='https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js'></script>
 <script src='data.js'></script>
