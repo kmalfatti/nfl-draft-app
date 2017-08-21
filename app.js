@@ -1,6 +1,10 @@
 var prev;
 var timer;
 
+$(document).ready(function(){
+    $('#myTable').DataTable();
+});
+
 data.players.forEach((cur, i)=>{
   var overall = $('<td>').append(i+1)
   var name = $('<td>').append($('<a>').attr('href', cur.link).text(cur.name).attr('target','_blank'))
@@ -47,6 +51,11 @@ function redisplay(){
   $('.undo').hide()
   clearInterval(timer)
 }
+
+$('#myTable').dataTable({
+  paging: false,
+  info: false,
+});
 
 
 //Confirm before closing window

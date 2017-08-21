@@ -4,17 +4,12 @@
     <title>Draft App</title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h1>Draft App</h1>
-<select name="Sort" id="">
-  <option value="overall">Overall</option>
-  <option value="team">Team</option>
-  <option value="rank">Rank</option>
-  <option value="projected">Projected</option>
-</select>
-<table class="table">
+<table class="table" id="myTable">
   <thead>
     <tr>
       <th>Overall</th>
@@ -30,7 +25,9 @@
   <tbody>
   </tbody>
 </table>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src='https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js'></script>
 <script src='data.js'></script>
 <script src='app.js'></script>
 
