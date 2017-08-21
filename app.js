@@ -68,7 +68,9 @@ $('#add-player-form').on('submit', function(e){
   var tdbye = $('<td>').append(inputbye)
   var button = $('<td>').append($('<button>').append().addClass('btn-xs btn-danger').text('Remove').on('click', remove))
   var addrow = $('<tr>').append(tdoverall, tdname, tdposiotion, tdteam, tdrank, tdprojected, tdbye, button)
-  $('tbody').append(addrow)
+  inputoverall%2===1 ? addrow.css('backgroundColor', 'white') : addrow.css('backgroundColor', 'rgb(235, 235, 235)')
+  $('#myTable').DataTable().rows.add(addrow)
+  $('#myTable').DataTable().columns.adjust().draw()
 })
 
 function remove(){
