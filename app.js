@@ -79,6 +79,7 @@ $('#add-player-form').on('submit', function(e){
 function remove(){
   $('.undo').hide()
   prev = $(this).parent().parent();
+  // console.log(prev.__proto__.overall)
   var bgc = prev.css('backgroundColor')
   var undo = $('<tr>').append($('<td>').append($('<button>').text('Undo').addClass('btn-xs btn-warning')).addClass('undo').attr('colspan', 9).append($('<span>').text(' 5').addClass('timer')))
   undo.css('backgroundColor', bgc)
@@ -87,9 +88,9 @@ function remove(){
   prev.hide()
   countdown(4);
 
-  if(prev.parent().parent().attr('id')=='my-players' ){
-    round--
-  }
+  // if(prev.parent().parent().attr('id')=='my-players' ){
+  //   round--
+  // }
 }
 
 function countdown(i) {
@@ -99,6 +100,22 @@ function countdown(i) {
       if (i===0){
         $('.undo').parent().hide()
         clearInterval(timer)
+        if(prev.parent().parent().attr('id')=='my-players' ){
+          round--
+          var player = prev.children()
+          var name = player[1]
+          var overallpick = $('<td>').append($(name).attr('data'))
+          var position = player[2]
+          var team = player[3]
+          var rank = player[4]
+          var projected = player[5]
+          var bye = player[6]
+          var add = $('<td>').append($('<span>').addClass('glyphicon glyphicon-plus').on('click', addplayer))
+          var remove = player[7]
+          var readdrow = $('<tr>').append(overallpick, name, position, team, rank, projected, bye, add, remove)
+          $('#myTable').DataTable().rows.add(readdrow)
+          $('#myTable').DataTable().columns.adjust().draw()
+        }
       }
       i--;
   }, 1000);
@@ -108,9 +125,9 @@ function redisplay(){
   $(prev).show()
   $('.undo').hide()
   clearInterval(timer)
-  if($(this).parent().parent().attr('id')=='my-players'){
-    round++
-  }
+  // if($(this).parent().parent().attr('id')=='my-players'){
+  //   round++
+  // }
 }
 
 $('#myTable').dataTable({
@@ -124,8 +141,10 @@ function addplayer(){
     var player = $(this).parent().parent().children()
     var name = player[1]
   if (confirm('Are you sure you want to draft '+name.innerText+'?')===true){ 
+    var overall = player[0].innerText
     $(this).parent().parent().children()[0].remove()
     $(this).parent().remove()
+    $(name).attr('data', overall)
     var tdround = $('<td>').append(round)
     var position = player[2]
     var team = player[3]
