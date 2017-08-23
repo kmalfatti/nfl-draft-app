@@ -79,7 +79,6 @@ $('#add-player-form').on('submit', function(e){
 function remove(){
   $('.undo').hide()
   prev = $(this).parent().parent();
-  // console.log(prev.__proto__.overall)
   var bgc = prev.css('backgroundColor')
   var undo = $('<tr>').append($('<td>').append($('<button>').text('Undo').addClass('btn-xs btn-warning')).addClass('undo').attr('colspan', 9).append($('<span>').text(' 5').addClass('timer')))
   undo.css('backgroundColor', bgc)
@@ -87,17 +86,20 @@ function remove(){
   prev.before(undo)
   prev.hide()
   countdown(4);
-
-  // if(prev.parent().parent().attr('id')=='my-players' ){
-  //   round--
-  // }
 }
 
 function countdown(i) {
   clearInterval(timer)
+  console.log('in here')
+  $('.btn-danger').prop('disabled', true)
+  $('.glyphicon-plus').css('pointer-events', 'none')
+  $('.glyphicon-plus').parent().toggleClass('disabled')
   timer = setInterval(function () {
       $('.timer').text(" "+i)
       if (i===0){
+        $('.btn-danger').prop('disabled', false)
+        $('.glyphicon-plus').css('pointer-events', 'auto')
+        $('.glyphicon-plus').parent().toggleClass('disabled')
         $('.undo').parent().hide()
         clearInterval(timer)
         if(prev.parent().parent().attr('id')=='my-players' ){
@@ -121,13 +123,17 @@ function countdown(i) {
   }, 1000);
 }
 
+// function cursor(){
+  
+// }
+
 function redisplay(){
   $(prev).show()
   $('.undo').hide()
   clearInterval(timer)
-  // if($(this).parent().parent().attr('id')=='my-players'){
-  //   round++
-  // }
+  $('.btn-danger').prop('disabled', false)
+  $('.glyphicon-plus').css('pointer-events', 'auto')
+  $('.glyphicon-plus').parent().toggleClass('disabled') 
 }
 
 $('#myTable').dataTable({
@@ -140,7 +146,7 @@ $('.glyphicon-plus').on('click', addplayer)
 function addplayer(){
     var player = $(this).parent().parent().children()
     var name = player[1]
-  if (confirm('Are you sure you want to draft '+name.innerText+'?')===true){ 
+  // if (confirm('Are you sure you want to draft '+name.innerText+'?')===true){ 
     var overall = player[0].innerText
     $(this).parent().parent().children()[0].remove()
     $(this).parent().remove()
@@ -155,7 +161,7 @@ function addplayer(){
     var newPlayer = $('<tr>').append(tdround, name, position, team, rank, projected, bye, remove)
     $('#my-players').append(newPlayer)
     round++
-  }
+  // }
 }
 
 //Confirm before closing window

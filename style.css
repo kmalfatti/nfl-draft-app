@@ -36,6 +36,13 @@ h1, h3{
 td, th{
   text-align: center; 
 }
+button[disabled]{
+  cursor:not-allowed;
+}
+
+.disabled{
+  cursor: not-allowed;
+}
 
 
 
