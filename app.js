@@ -1,5 +1,6 @@
 var prev;
 var timer;
+var round = 1;
 
 var bye5 = ['atl', 'den', 'no', 'was']
 var bye6 = ['buf', 'cin', 'dal', 'sea']
@@ -22,12 +23,13 @@ data.players.forEach((cur, i)=>{
   var rank = $('<td>').append(cur.rank)
   var projected = $('<td>').append(cur.projected_points)
   var bye = $('<td>').append(cur.bye)
+  var add = $('<td>').append($('<span>').addClass('glyphicon glyphicon-plus'))
   var button = $('<td>').append($('<button>').append().addClass('btn-xs btn-danger').text('Remove').on('click', remove))
 
-  var row = $('<tr>').append(overall, name, position, team, rank, projected, bye, button)
+  var row = $('<tr>').append(overall, name, position, team, rank, projected, bye, add, button)
   i%2===0 ? row.css('backgroundColor', 'white') : row.css('backgroundColor', 'rgb(235, 235, 235)')
 
-  $('tbody').append(row)
+  $('#tbody-available-players').append(row)
 })
 
 $('#add-player-form').on('submit', function(e){
@@ -66,8 +68,9 @@ $('#add-player-form').on('submit', function(e){
   var tdrank = $('<td>').append(inputrank)
   var tdprojected = $('<td>').append(inputprojected)
   var tdbye = $('<td>').append(inputbye)
+  var tddraft = $('<td>').append($('<span>').addClass('glyphicon glyphicon-plus').on('click', addplayer))
   var button = $('<td>').append($('<button>').append().addClass('btn-xs btn-danger').text('Remove').on('click', remove))
-  var addrow = $('<tr>').append(tdoverall, tdname, tdposiotion, tdteam, tdrank, tdprojected, tdbye, button)
+  var addrow = $('<tr>').append(tdoverall, tdname, tdposiotion, tdteam, tdrank, tdprojected, tdbye, tddraft, button)
   inputoverall%2===1 ? addrow.css('backgroundColor', 'white') : addrow.css('backgroundColor', 'rgb(235, 235, 235)')
   $('#myTable').DataTable().rows.add(addrow)
   $('#myTable').DataTable().columns.adjust().draw()
@@ -77,18 +80,22 @@ function remove(){
   $('.undo').hide()
   prev = $(this).parent().parent();
   var bgc = prev.css('backgroundColor')
-  var undo = $('<tr>').append($('<td>').append($('<button>').text('Undo').addClass('btn-xs btn-warning')).addClass('undo').attr('colspan', 8).append($('<span>').text(' 5')))
+  var undo = $('<tr>').append($('<td>').append($('<button>').text('Undo').addClass('btn-xs btn-warning')).addClass('undo').attr('colspan', 9).append($('<span>').text(' 5').addClass('timer')))
   undo.css('backgroundColor', bgc)
   $(undo).on('click', redisplay)
   prev.before(undo)
   prev.hide()
   countdown(4);
+
+  if(prev.parent().parent().attr('id')=='my-players' ){
+    round--
+  }
 }
 
 function countdown(i) {
   clearInterval(timer)
   timer = setInterval(function () {
-      $('span').text(" "+i)
+      $('.timer').text(" "+i)
       if (i===0){
         $('.undo').parent().hide()
         clearInterval(timer)
@@ -101,6 +108,9 @@ function redisplay(){
   $(prev).show()
   $('.undo').hide()
   clearInterval(timer)
+  if($(this).parent().parent().attr('id')=='my-players'){
+    round++
+  }
 }
 
 $('#myTable').dataTable({
@@ -108,6 +118,26 @@ $('#myTable').dataTable({
   info: false,
 });
 
+$('.glyphicon-plus').on('click', addplayer)
+
+function addplayer(){
+    var player = $(this).parent().parent().children()
+    var name = player[1]
+  if (confirm('Are you sure you want to draft '+name.innerText+'?')===true){ 
+    $(this).parent().parent().children()[0].remove()
+    $(this).parent().remove()
+    var tdround = $('<td>').append(round)
+    var position = player[2]
+    var team = player[3]
+    var rank = player[4]
+    var projected = player[5]
+    var bye = player[6]
+    var remove = player[8]
+    var newPlayer = $('<tr>').append(tdround, name, position, team, rank, projected, bye, remove)
+    $('#my-players').append(newPlayer)
+    round++
+  }
+}
 
 //Confirm before closing window
 /*
@@ -123,3 +153,4 @@ window.onbeforeunload = (e) => {
     return 'Sure?';
 };
 */
+

@@ -13,12 +13,32 @@
 
 input{
   border-radius: 5px;
+  width: 400px;
 }
 
 #add-player-heading{
   text-align: center;
 }
 
-h1{
+h1, h3{
   text-align: center;
+}
+
+#available-players{
+  margin-top: 50px;
+}
+
+.glyphicon{
+  color: rgb(40, 176, 255);
+  cursor: pointer;
+}
+
+td, th{
+  text-align: center; 
+}
+
+
+
+*{
+  /*border: 1px solid red*/
 }
