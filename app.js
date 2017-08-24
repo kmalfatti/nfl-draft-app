@@ -27,7 +27,7 @@ data.players.forEach((cur, i)=>{
   var button = $('<td>').append($('<button>').append().addClass('btn-xs btn-danger').text('Remove').on('click', remove))
 
   var row = $('<tr>').append(overall, name, position, team, rank, projected, bye, add, button)
-  i%2===0 ? row.css('backgroundColor', 'white') : row.css('backgroundColor', 'rgb(235, 235, 235)')
+  i%2===0 ? row.css('backgroundColor', 'black') : row.css('backgroundColor', 'rgb(100, 100, 100)')
 
   $('#tbody-available-players').append(row)
 })
