@@ -1,3 +1,7 @@
+html, body{
+    overflow-x: hidden; 
+}
+
 .undo{
   text-align: center;
 }
@@ -16,7 +20,7 @@ input{
   width: 400px;
 }
 
-#add-player-heading{
+#add-player{
   text-align: center;
 }
 
@@ -42,6 +46,29 @@ button[disabled]{
 
 .disabled{
   cursor: not-allowed;
+}
+
+.page-header{
+  margin-top: 0;
+  padding-top: 0;
+  height: 550px;
+  background: url(./nfl-teams.jpg) no-repeat fixed center;
+  background-size: cover;
+  /*width: 100%;*/
+}
+
+.header-text{
+  margin-top: 0;
+  color: white;
+  font-size: 53px;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+.navbar{
+  margin:0;
 }
 
 

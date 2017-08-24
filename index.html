@@ -11,8 +11,21 @@
     <meta http-equiv="Content-Language" content="en">
 </head>
 <body>
-<h1>2017 NFL Fantasy Football Draft Assistant</h1>
-<h3>Your Team</h3>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#team">Team</a></li>
+        <li><a href="#available-players">Draft</a></li>
+        <li><a href="#add-player">Add Player</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+  </div>
+</nav>
+<div class="page-header">
+  <h1 class="header-text">2017 NFL Fantasy Football Draft Assistant</h1>
+</div>
+<h3 id="team">Your Team</h3>
 
 <table class="table" id="my-players">
   <thead>
@@ -47,7 +60,7 @@
   </tbody>
 </table>
 
-<h3 id="add-player-heading">Add A Player</h3>
+<h3 id="add-player">Add A Player</h3>
 <form class="form-horizontal" id="add-player-form">
   <div class="form-group">
     <label for="inputname" class="col-sm-2 control-label">Name</label>
@@ -137,6 +150,11 @@
     </div>
   </div>
 </form>
+
+<div id="about">
+  <h3>About</h3>
+  <p>The NFL draft assistant is...</p>
+</div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src='https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js'></script>
