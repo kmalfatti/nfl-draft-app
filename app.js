@@ -71,7 +71,7 @@ $('#add-player-form').on('submit', function(e){
   var tddraft = $('<td>').append($('<span>').addClass('glyphicon glyphicon-plus').on('click', addplayer))
   var button = $('<td>').append($('<button>').append().addClass('btn-xs btn-danger').text('Remove').on('click', remove))
   var addrow = $('<tr>').append(tdoverall, tdname, tdposiotion, tdteam, tdrank, tdprojected, tdbye, tddraft, button)
-  inputoverall%2===1 ? addrow.css('backgroundColor', 'white') : addrow.css('backgroundColor', 'rgb(235, 235, 235)')
+  inputoverall%2===1 ? addrow.css('backgroundColor', 'black') : addrow.css('backgroundColor', 'rgb(100, 100, 100)')
   $('#myTable').DataTable().rows.add(addrow)
   $('#myTable').DataTable().columns.adjust().draw()
 })
@@ -115,6 +115,7 @@ function countdown(i) {
           var add = $('<td>').append($('<span>').addClass('glyphicon glyphicon-plus').on('click', addplayer))
           var remove = player[7]
           var readdrow = $('<tr>').append(overallpick, name, position, team, rank, projected, bye, add, remove)
+          readdrow.css('backgroundColor', 'black')
           $('#myTable').DataTable().rows.add(readdrow)
           $('#myTable').DataTable().columns.adjust().draw()
         }
@@ -159,6 +160,7 @@ function addplayer(){
     var bye = player[6]
     var remove = player[8]
     var newPlayer = $('<tr>').append(tdround, name, position, team, rank, projected, bye, remove)
+
     $('#my-players').append(newPlayer)
     round++
   // }

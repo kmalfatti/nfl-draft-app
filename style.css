@@ -87,10 +87,13 @@ button[disabled]{
   margin: 0 auto;
 }
 
-#about, #strategy{
+#about, #strategy, #contact{
   text-align: justify;
 }
 
+strong{
+  color: white;
+}
 @media screen and (max-width: 600px){
   body, html{
     overflow-x: auto;
@@ -102,9 +105,14 @@ button[disabled]{
     padding-left: 15px; 
   }
 }
-strong{
-  color: white;
+
+/*.even{
+  background-color: black; 
 }
+
+.odd{
+  background-color: rgb(100, 100, 100);
+}*/
 
 *{
   /*border: 1px solid red*/
