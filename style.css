@@ -15,9 +15,15 @@ html, body{
   float: none;
 }
 
+#myTable_filter:first-child{
+  color: white;
+  font-size: 16px;
+}
+
 input{
   border-radius: 5px;
   width: 400px;
+  color: black;
 }
 
 #add-player{
@@ -71,7 +77,34 @@ button[disabled]{
   margin:0;
 }
 
+#malfatti{
+  display: inline-block;
+  padding-left: 4px;
+}
 
+.container{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#about, #strategy{
+  text-align: justify;
+}
+
+@media screen and (max-width: 600px){
+  body, html{
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 768px){
+  #malfatti-li{
+    padding-left: 15px; 
+  }
+}
+strong{
+  color: white;
+}
 
 *{
   /*border: 1px solid red*/

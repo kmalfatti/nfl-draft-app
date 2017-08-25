@@ -12,17 +12,38 @@
     <meta http-equiv="Content-Language" content="en">
 </head>
 <body>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="#team">Team</a></li>
         <li><a href="#available-players">Draft</a></li>
         <li><a href="#add-player">Add Player</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#strategy">Strategy</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-  </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li id="malfatti-li">Researched, Designed, Developed by<a id='malfatti' href='https://www.malfatti.us' target="_blank">Kyle Malfatti</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
+
+
 <div class="page-header">
   <h1 class="header-text">2017 NFL Fantasy Football Draft Assistant</h1>
 </div>
@@ -61,6 +82,7 @@
   </tbody>
 </table>
 
+<div class="container">
 <h3 id="add-player">Add A Player</h3>
 <form class="form-horizontal" id="add-player-form">
   <div class="form-group">
@@ -152,9 +174,40 @@
   </div>
 </form>
 
-<div id="about">
-  <h3>About</h3>
-  <p>The NFL draft assistant is...</p>
+  <div id="about">
+    <h3>About</h3>
+    <p>The NFL Fantasy Football Draft Assistant is a strategic tool used for managing the list of current availble players to determine the best possible player to pick at that time. Designed for new and seasoned players alike, finding the best players has never been easier!</p>
+    <p>The list is sorted by overall pick according to their rank. Rank is determined by the nationwide average point in which they were picked in mock drafts. Projected points are the amount of fantasy points they are expected to get over the season. 
+    </p>
+    <p>Bye: is the week they are not playing. It is important that you have someone playing that week in their place. The blue "+" will draft the player to your team. The "Remove" button will remove the player when they are selected.</p>
+    <p>Adding players: Most players worthy of drafting are listed, however, some may not appear in the list. Add a player by filling out this <a href="#add-player-form">form</a></p>
+    <p>Altering Player Data: To change player data simply delete the player and re-add them with the data of your choosing. They will be placed back in the table at their new appropriate position.</p>
+    <p>Sorting: The list is sorted in ascending order by default. It can be sorted by descending order by clicking the same column. Sort by multiple columns by holding the "shift" key and clicking the columns you want sorted.</p>
+    <p>Searching: Search for anything you want. Ex "Brown wr pit"</p>
+    <p>Each player's name is a link to get the most current information about the player. Since injuries, suspensions, and trades occur frequently, it is important to get the most current information about the player before selecting them for your team.</p>
+  </div>
+
+  <div id="strategy">
+    <h3>Strategy</h3>
+    <p><strong>Round 1: Draft a RB or WR.</strong></p>
+    <p><strong>Round 2: Draft a RB or WR.</strong> If you selected an RB in round 1, go for a WR or vice versa.</p>
+    <p><strong>Round 3: Draft a RB, WR, all-star QB, or all-star TE.</strong> Go for an RB, WR, or if Rodgers, Brady, or Gronkowski are availble, pick one of them.</p>
+    <p><strong>Round 4: Draft a RB, WR, all-star QB, or all-star TE.</strong> If you selected an RB in round 3, pick a WR, or vice versa, or an all-star QB or TE such as Rodgers, Brady, Brees, Gronkowski or Kelce</p>
+    <p><strong>You should have: </strong><br>2RBs &amp; 2WRs or <br>3 total RBs/WRs &amp; 1 total QB/TE</p>
+    <p><strong>Round 5: Draft a RB, WR, QB or TE.</strong> If you have 2RBs &amp; 2WRs, draft a QB or TE. If you only have 3 total RBs/WRs, draft another RB/WR, whichever one you are lacking.</p>
+    <p><strong>Round 6: Draft a QB or TE.</strong> If you haven't done so yet, draft a QB or TE. If you have both, get a RB or WR.</p>
+    <p><strong>Round 7: Draft a RB or WR.</strong></p>
+    <p><strong>Round 8: Draft a RB, WR, TE, or QB.</strong></p>
+    <p><strong>Round 9: Draft a RB, WR, TE, or QB.</strong></p>
+    <p><strong>Round 10: Draft a RB, WR, TE, QB or all-star K</strong> Draft a player from whichever position you are lacking, or draft an all-star K such as Gostkowski, Bryant, or Tucker, if available.</p>
+    <p><strong>You should have: </strong><br>3RBs, 3WRs, 2QBs, &amp; 2 TEs or<br>3RBs, 3WRs, 2QBs, 1 TE &amp; 1 K</p>
+    <p><strong>Round 11: Draft a RB, WR, TE, all-star K or all-star DEF.</strong></p>
+    <p><strong>Round 12: Draft a RB, WR, all-star K or all-star DEF.</strong></p>
+    <p><strong>Round 13: Draft a RB, WR, QB, TE, K or DEF.</strong></p>
+    <p><strong>Round 14: Draft a K or DEF.</strong></p>
+    <p><strong>Round 15: Draft a K or DEF.</strong></p>
+  </div>
+
 </div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
