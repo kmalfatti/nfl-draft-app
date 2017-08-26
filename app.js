@@ -15,6 +15,7 @@ $(document).ready(function(){
     $('#myTable').DataTable();
 });
 
+//creating table on page load
 data.players.forEach((cur, i)=>{
   var overall = $('<td>').append(i+1)
   var name = $('<td>').append($('<a>').attr('href', cur.link).text(cur.name).attr('target','_blank'))
@@ -32,6 +33,7 @@ data.players.forEach((cur, i)=>{
   $('#tbody-available-players').append(row)
 })
 
+//form for adding a new player
 $('#add-player-form').on('submit', function(e){
   e.preventDefault()
   var tdname
@@ -68,19 +70,29 @@ $('#add-player-form').on('submit', function(e){
   var tdrank = $('<td>').append(inputrank)
   var tdprojected = $('<td>').append(inputprojected)
   var tdbye = $('<td>').append(inputbye)
-  var tddraft = $('<td>').append($('<span>').addClass('glyphicon glyphicon-plus').on('click', addplayer))
+  var tddraft = $('<td>').append($('<span>').addClass('glyphicon glyphicon-plus').on('click', draftplayer))
   var button = $('<td>').append($('<button>').append().addClass('btn-xs btn-danger').text('Remove').on('click', remove))
   var addrow = $('<tr>').append(tdoverall, tdname, tdposiotion, tdteam, tdrank, tdprojected, tdbye, tddraft, button)
   inputoverall%2===1 ? addrow.css('backgroundColor', 'black') : addrow.css('backgroundColor', 'rgb(100, 100, 100)')
   $('#myTable').DataTable().rows.add(addrow)
   $('#myTable').DataTable().columns.adjust().draw()
+  var checkmark = $('<span>').addClass('glyphicon glyphicon-ok').css({'color':'green', 'display':'none', 'font-size': '20px'})
+  $('.submit-btn').append(checkmark)
+  $('#inputname').val('')
+  $('#inputposition').val('')
+  $('#inputteam').val('')
+  $('#inputoverall').val('')
+  $('#inputrank').val('')
+  $('#inputprojected').val('')
+  $('#inputlink').val('')
+  checkmark.show(500).delay(2000).fadeOut(900)
 })
 
 function remove(){
   $('.undo').hide()
   prev = $(this).parent().parent();
   var bgc = prev.css('backgroundColor')
-  var undo = $('<tr>').append($('<td>').append($('<button>').text('Undo').addClass('btn-xs btn-warning')).addClass('undo').attr('colspan', 9).append($('<span>').text(' 5').addClass('timer')))
+  var undo = $('<tr>').append($('<td>').append($('<button>').text('Undo').addClass('btn-xs btn-warning')).addClass('undo').attr('colspan', 9).append($('<span>').text(' 5').addClass('timer badge')))
   undo.css('backgroundColor', bgc)
   $(undo).on('click', redisplay)
   prev.before(undo)
@@ -90,7 +102,6 @@ function remove(){
 
 function countdown(i) {
   clearInterval(timer)
-  console.log('in here')
   $('.btn-danger').prop('disabled', true)
   $('.glyphicon-plus').css('pointer-events', 'none')
   $('.glyphicon-plus').parent().toggleClass('disabled')
@@ -112,7 +123,7 @@ function countdown(i) {
           var rank = player[4]
           var projected = player[5]
           var bye = player[6]
-          var add = $('<td>').append($('<span>').addClass('glyphicon glyphicon-plus').on('click', addplayer))
+          var add = $('<td>').append($('<span>').addClass('glyphicon glyphicon-plus').on('click', draftplayer))
           var remove = player[7]
           var readdrow = $('<tr>').append(overallpick, name, position, team, rank, projected, bye, add, remove)
           readdrow.css('backgroundColor', 'black')
@@ -123,10 +134,6 @@ function countdown(i) {
       i--;
   }, 1000);
 }
-
-// function cursor(){
-  
-// }
 
 function redisplay(){
   $(prev).show()
@@ -142,12 +149,12 @@ $('#myTable').dataTable({
   info: false,
 });
 
-$('.glyphicon-plus').on('click', addplayer)
+$('.glyphicon-plus').on('click', draftplayer)
 
-function addplayer(){
+function draftplayer(){
     var player = $(this).parent().parent().children()
     var name = player[1]
-  // if (confirm('Are you sure you want to draft '+name.innerText+'?')===true){ 
+  if (confirm('Are you sure you want to draft '+name.innerText+'?')===true){ 
     var overall = player[0].innerText
     $(this).parent().parent().children()[0].remove()
     $(this).parent().remove()
@@ -163,37 +170,33 @@ function addplayer(){
 
     $('#my-players').append(newPlayer)
     round++
-  // }
+  }
 }
 
 //scroll to top
-// ===== Scroll to Top ==== 
 $(window).scroll(function() {
-    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-        $('#return-to-top').fadeIn(200);    // Fade in the arrow
+    if ($(this).scrollTop() >= 50) {
+        $('#return-to-top').fadeIn(200);
     } else {
-        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+        $('#return-to-top').fadeOut(200);
     }
 });
-$('#return-to-top').click(function() {      // When arrow is clicked
+$('#return-to-top').click(function() {
     $('body,html').animate({
-        scrollTop : 0                       // Scroll to top of body
+        scrollTop : 0
     }, 500);
 });
 
 
 //Confirm before closing window
-/*
 window.onbeforeunload = (e) => {
     e = e || window.event;
-
     // For IE and Firefox prior to version 4
     if (e) {
         e.returnValue = 'Sure?';
     }
-
     // For Safari
     return 'Sure?';
 };
-*/
+
 

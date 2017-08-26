@@ -47,7 +47,7 @@
 <div class="page-header">
   <h1 class="header-text">2017 NFL Fantasy Football Draft Assistant</h1>
 </div>
-<h3 id="team">Your Team</h3>
+<h3 id="team">My Team</h3>
 
 <table class="table" id="my-players">
   <thead>
@@ -95,6 +95,7 @@
       <label for="inputposition" class="col-sm-2 control-label">Position</label>
       <div class="col-sm-9">
       <select id="inputposition" class="form-control" required>
+        <option value="" disabled selected>Position</option>
         <option value="rb">RB</option>
         <option value="wr">WR</option>
         <option value="te">TE</option>
@@ -108,6 +109,7 @@
       <label for="inputteam" class="col-sm-2 control-label">Team</label>
       <div class="col-sm-9">
       <select id="inputteam" class="form-control" required>
+        <option value="" disabled selected>Team</option>
         <option value="ari">ARI</option>
         <option value="atl">ATL</option>
         <option value="bal">BAL</option>
@@ -168,7 +170,7 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-8">
+    <div class="col-sm-offset-2 col-sm-8 submit-btn">
       <button type="submit" class="btn btn-default" id="add-player">Submit</button>
     </div>
   </div>
