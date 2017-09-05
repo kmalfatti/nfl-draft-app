@@ -34,7 +34,7 @@ data.players.forEach((cur, i)=>{
 })
 
 //form for adding a new player
-$('#add-player-form').on('submit', function(e){
+$('#add-player-form').on('submit', (e)=>{
   e.preventDefault()
   var tdname
   var inputbye;
