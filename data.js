@@ -27,15 +27,6 @@ const data = {
       projected_points:209.90,
       bye: 9,
     },
-    { 
-      link:"https://fantasydata.com/nfl-stats/player-details.aspx?playerid=16389-odell-beckham-jr-new-york-giants",
-      name:"Odell Beckham Jr.",
-      position: "WR",
-      rank:5.5,
-      team:"NYG",
-      projected_points:193.40,
-      bye: 8,
-    },
     {
       link:"https://fantasydata.com/nfl-stats/player-details.aspx?playerid=13291-julio-jones-atlanta-falcons",
       name:"Julio Jones",
@@ -115,6 +106,15 @@ const data = {
       rank:14.6,
       team:"GB",
       projected_points:186.60,
+      bye: 8,
+    },
+    { 
+      link:"https://fantasydata.com/nfl-stats/player-details.aspx?playerid=16389-odell-beckham-jr-new-york-giants",
+      name:"Odell Beckham Jr.",
+      position: "WR",
+      rank:15,
+      team:"NYG",
+      projected_points:193.40,
       bye: 8,
     },
     { 
@@ -1029,7 +1029,7 @@ const data = {
     { 
       link:"https://fantasydata.com/nfl-stats/player-details.aspx?playerid=13227-randall-cobb-green-bay-packers",
       name:"Randall Cobb",
-      position: "RB",
+      position: "WR",
       rank:111.8,
       team:"GB",
       projected_points:121,
