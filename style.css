@@ -149,3 +149,8 @@ strong{
 *{
   /*border: 1px solid red*/
 }
+
+::selection {
+background-color: rgb(40, 176, 255);
+color: white;
+}
