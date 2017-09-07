@@ -150,6 +150,10 @@ strong{
   /*border: 1px solid red*/
 }
 
+.dataTables_empty{
+  background-color: rgb(100, 100, 100);
+}
+
 ::selection {
 background-color: rgb(40, 176, 255);
 color: white;
